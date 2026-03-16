@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Sketch Converter</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image to Sketch Converter</h1>
+
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <br>
+            <button onclick="convertImage()">Convert to Sketch</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <p>Converting image to sketch...</p>
+        </div>
+
+        <div class="result" id="result">
+            <!-- Result will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        async function convertImage() {
+            const fileInput = document.getElementById('imageInput');
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+
+            if (!fileInput.files[0]) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            loading.style.display = 'block';
+            result.innerHTML = '';
+
+            try {
+                const response = await fetch('/convert', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const imageUrl = URL.createObjectURL(blob);
+                    result.innerHTML = `
+                        <h3>Sketch Result:</h3>
+                        <img src="${imageUrl}" alt="Sketch">
+                        <br>
+                        <button onclick="downloadSketch('${imageUrl}')">Download Sketch</button>
+                    `;
+                } else {
+                    const error = await response.json();
+                    result.innerHTML = `<p style="color: red;">Error: ${error.error}</p>`;
+                }
+            } catch (error) {
+                result.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function downloadSketch(imageUrl) {
+            const a = document.createElement('a');
+            a.href = imageUrl;
+            a.download = 'sketch.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

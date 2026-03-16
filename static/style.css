@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url('/sketches/sketch_hanuman hd wallpaper black and white _ Ghantee.jpeg'), linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-blend-mode: overlay;
+    color: #fff;
+    min-height: 100vh;
+}
+.container {
+    background: rgba(225, 222, 245, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.upload-section {
+    margin: 20px 0;
+    text-align: center;
+}
+input[type="file"] {
+    margin: 10px 0;
+    padding: 8px;
+    border: 2px dashed #667eea;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #2c3e50;
+    font-weight: 500;
+}
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+.result {
+    margin-top: 20px;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+img:hover {
+    transform: scale(1.02);
+}
+.loading {
+    display: none;
+    margin: 20px 0;
+}

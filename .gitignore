@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+pipefile-lock
+uploads/
+sketches/
+*.png
+*.jpg
+*.jpeg
+*.gif
+AI lab/
+.DS_Store
+Thumbs.db
+
